@@ -38,3 +38,9 @@ jobs:
         run: |
           forge test -vvv
         id: test
+
+      - name: Expose contract artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: erc721batchmintable-artifact
+          path: out/ERC721BatchMintable.sol/ERC721BatchMintable.json
