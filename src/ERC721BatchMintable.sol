@@ -23,8 +23,9 @@ contract ERC721BatchMintable is ERC721, ERC721Enumerable, AccessControl {
     }
 
     function safeMint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
-        for (uint256 index = 0; index < amount; index++)
+        for (uint256 index = 0; index < amount; index++) {
             _safeMint(to, _nextTokenId++);
+        }
     }
 
     function setOwner(address newOwner) public onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -41,10 +42,7 @@ contract ERC721BatchMintable is ERC721, ERC721Enumerable, AccessControl {
         return super._update(to, tokenId, auth);
     }
 
-    function _increaseBalance(address account, uint128 value)
-        internal
-        override(ERC721, ERC721Enumerable)
-    {
+    function _increaseBalance(address account, uint128 value) internal override(ERC721, ERC721Enumerable) {
         super._increaseBalance(account, value);
     }
 
